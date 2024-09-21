@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Tin Mạng Xã Hội</title>
+    <link rel="stylesheet" href="./Css-Javascript/home.css">
+    <link rel="shortcut icon" href="avatar.jpg" type="image/png">
+    
+    <!-- Thêm Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+        }
+        #background-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+            transform: translate(-50%, -50%);
+        }
+        .content {
+            position: relative;
+            z-index: 1;
+            margin: auto;
+            width: 300px; /* Đặt chiều rộng cố định cho nội dung */
+            text-align: center; /* Căn giữa văn bản */
+        }
+        .avatar-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .avatar {
+            width: 150px; /* Đặt kích thước cho avatar */
+            height: 150px; /* Đặt kích thước cho avatar */
+            border-radius: 50%; /* Tạo hình tròn */
+            object-fit: cover; /* Cắt ảnh cho vừa khung hình */
+            opacity: 0; /* Ẩn ảnh ban đầu */
+            animation: fadeIn 1s forwards; /* Thêm hiệu ứng fade-in */
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1; /* Hiện ảnh */
+            }
+        }
+        .link {
+            display: inline-block;
+            margin: 10px;
+            font-size: 1.5em;
+            color: #00bfff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .link:hover {
+            color: #ffcc00;
+        }
+        .social-icons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .social-item {
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            transition: background 0.3s;
+            width: 250px;
+            justify-content: center;
+        }
+        .social-item:hover {
+            background: rgba(255, 204, 0, 0.3);
+        }
+        .social-icon {
+            margin-right: 10px;
+            font-size: 2em;
+            color: #00bfff;
+            transition: color 0.3s;
+        }
+        .social-icon:hover {
+            color: #ffcc00;
+        }
+        .rainbow-text {
+            display: inline-block;
+            animation: moveIn 4s forwards, rainbow 2s linear infinite;
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+            right: 100%;
+        }
+        @keyframes moveIn {
+            0% { right: 100%; }
+            100% { right: 0; }
+        }
+        @keyframes rainbow {
+            0% { color: red; }
+            14% { color: orange; }
+            28% { color: yellow; }
+            42% { color: green; }
+            57% { color: blue; }
+            71% { color: indigo; }
+            85% { color: violet; }
+            100% { color: red; }
+        }
+        .button {
+            padding: 10px 20px;
+            border: none;
+            background: #555;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-size: 1.2em;
+            position: relative;
+            overflow: hidden;
+            margin: 5px;
+        }
+        .button:hover {
+            background: #777;
+        }
+        .color-flash {
+            animation: flash 0.7s infinite;
+        }
+        @keyframes flash {
+            0% { color: red; }
+            14% { color: orange; }
+            28% { color: yellow; }
+            42% { color: green; }
+            57% { color: blue; }
+            71% { color: indigo; }
+            85% { color: violet; }
+            100% { color: red; }
+        }
+    </style>
+</head>
+<body>
+    <video id="background-video" autoplay loop muted>
+        <source src="video_anime.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+        
+        <div class="avatar-container">
+            <img src="avatar.jpg" alt="Avatar" class="avatar">
+        </div>
+
+        <p>Liên hệ với tôi qua các mạng xã hội dưới đây:</p>
+        
+        <div class="social-icons">
+            <div class="social-item">
+                <a class="social-icon" href="https://www.facebook.com/casperisme17" target="_blank">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <span class="rainbow-text">Facebook</span>
+            </div>
+            <div class="social-item">
+                <a class="social-icon" href="https://www.youtube.com/@hades1712-x4h" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <span class="rainbow-text">YouTube</span>
+            </div>
+            <div class="social-item">
+                <a class="social-icon" href="https://github.com/your-github-username" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
+                <span class="rainbow-text">GitHub</span>
+            </div>
+        </div>
+        
+        <audio id="myAudio" loop>
+            <source src="music.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        
+        <button class="button" id="playBtn" onclick="playMusic()">Play</button>
+        <button class="button" id="pauseBtn" onclick="pauseMusic()">Pause</button>
+    </div>
+
+    <script>
+        var audio = document.getElementById("myAudio"); 
+
+        function playMusic() {
+            audio.play();
+            animateButton("playBtn");
+        }
+
+        function pauseMusic() {
+            audio.pause();
+            animateButton("pauseBtn");
+        }
+
+        function animateButton(buttonId) {
+            var button = document.getElementById(buttonId);
+            button.classList.add("color-flash");
+            setTimeout(() => {
+                button.classList.remove("color-flash");
+            }, 700); // Thời gian nhấp nháy
+        }
+    </script>
+</body>
+</html>
